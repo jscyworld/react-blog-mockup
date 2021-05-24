@@ -1,18 +1,55 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { Route } from "react-router";
+import { Link } from "react-router-dom";
+import Home from "./components/Home";
+import About from "./components/About";
+import Project from "./components/Project";
+import Contact from "./components/Contact";
+import styled from "styled-components";
+
+const BtnDiv = styled.div`
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    background: cyan;
+`;
+
+const ContentDiv = styled.div`
+    background: tan;
+`;
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    Learn React
-                </a>
-            </header>
+        <div>
+            <BtnDiv>
+                <button>
+                    <Link to="/" style={{ textDecoration: "none" }}>
+                        HOME
+                    </Link>
+                </button>
+                <button>
+                    <Link to="/about" style={{ textDecoration: "none" }}>
+                        ABOUT
+                    </Link>
+                </button>
+                <button>
+                    <Link to="/project" style={{ textDecoration: "none" }}>
+                        PROJECT
+                    </Link>
+                </button>
+                <button>
+                    <Link to="/contact" style={{ textDecoration: "none" }}>
+                        CONTACT ME
+                    </Link>
+                </button>
+            </BtnDiv>
+            <ContentDiv>
+                <Route path="/" exact component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/project" component={Project} />
+                <Route path="/contact" component={Contact} />
+            </ContentDiv>
         </div>
     );
 }
